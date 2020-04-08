@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Expedia_Suite_Adhoc">
+  <listeners>
+  <listener class-name="flight.expedia.com.ScreenshotListener"></listener>
+  </listeners>
+  
+  <test name="Chrome_Test">
+  <parameter name="url" value="https://www.expedia.com"></parameter>
+  <parameter name="browser" value="chrome"></parameter>
+    <classes>
+      <class name="run.Execute"/>
+    </classes>
+  </test> <!-- Test -->
+  
+   <!--
+  <test name="Firefox_Test">
+  <parameter name="url" value="https://www.expedia.com"></parameter>
+  <parameter name="browser" value="firefox"></parameter>
+    <classes>
+      <class name="run.Execute"/>
+    </classes>
+  </test>   Test  -->
+</suite> <!-- Suite -->
