@@ -54,9 +54,8 @@ Make sure you have a JDK installed on your system. Refer to Apache Maven System 
 2. Download Apache Maven
 3. Extract the Archive
 4. Create M2_HOME, MAVEN_HOME System variable (with the path to Apache Maven bin file in your System directory).
-5. In order to run Apache Maven, it is necessary to set up M2_HOME, MAVEN_HOME Path variable:
-   %M2_HOME%
-   %MAVEN_HOME%\bin
+5. In order to run Apache Maven, it is necessary to set up Path variable for M2_HOME, MAVEN_HOME:
+   %M2_HOME% and %MAVEN_HOME%\bin
 6. Verify Apache Maven Installation
 In the opened CMD window, type the following command and press Enter: mvn --version
 
