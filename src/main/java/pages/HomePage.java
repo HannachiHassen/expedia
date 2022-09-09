@@ -1,44 +1,54 @@
 package pages;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 
-public final class HomePage extends BasePage{
+import enums.WaitStrategy;
 
-	private HomePage() {}
-	
-	@FindBy(xpath = "button[@id='tab-flight-tab-hp']/span[2]")
-	private WebElement flight;
-	
-	@FindBy(id = "flight-type-roundtrip-label-hp-flight")
-	private WebElement roundtrip;
-	
-	@FindBy(id = "flight-origin-hp-flight")
-	private WebElement depart;
-	
-	@FindBy(id = "flight-origin-hp-flight")
-	private WebElement destination;
-	
-	@FindBy(id = "flight-origin-hp-flight")
-	private WebElement departurDate;
-	
-	@FindBy(id = "flight-origin-hp-flight")
-	private WebElement returnDate;
+public final class HomePage extends BasePage {
 
-	public WebElement getFlight() {
-		return flight;
+	public HomePage() {
 	}
 
-	public WebElement getDepart() {
-		return depart;
+	private final By flight = By.xpath("//span[contains(text(),'Flights')]");
+	private final By roundTrip = By.xpath("//span[contains(text(),'Roundtrip')]");
+	private final By textboxDeparture = By.xpath("//span[contains(text(),'Leaving from:')]");
+	private final By textboxDestination = By.xpath("//div[contains(text(),'Going to')]");
+	private final By departurDate = By.cssSelector("#d1-btn");
+	private final By returnDate = By.cssSelector("#d2-btn");
+	
+
+	public String getTitle() {
+		return getPageTitle();
 	}
 
-	public WebElement getDestination() {
-		return destination;
-	}
-
-	public WebElement getRoundtrip() {
-		return roundtrip;
+	public HomePage getFlight() {
+		click(flight, WaitStrategy.CLICKABLE, "flight");
+		return this;
 	}	
+	
+	public HomePage getRoundtrip() {
+		click(roundTrip, WaitStrategy.CLICKABLE, "Round Trip");
+		return this;
+	}
 
+	public HomePage enterDeparture(String departureFrom) {
+		sendKeys(textboxDeparture, WaitStrategy.PRESENCE, departureFrom , "Leaving from");
+		return this;
+	}
+	
+	public HomePage enterDestination(String goingTo) {
+		sendKeys(textboxDestination, WaitStrategy.PRESENCE, goingTo ,"Going To");
+		return this;
+	}
+
+	public HomePage enterDeparturDate() {
+		click(departurDate, WaitStrategy.CLICKABLE, "Departure Date");
+		return this;
+	}
+
+	public HomePage enterReturnDate() {
+		click(returnDate, WaitStrategy.CLICKABLE, "Return Date");
+		return this;
+	}
+	
 }

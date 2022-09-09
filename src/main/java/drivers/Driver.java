@@ -1,9 +1,6 @@
 package drivers;
 
 import java.util.Objects;
-
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import constants.FrameworkConstants;
@@ -16,22 +13,12 @@ public final class Driver {
 
 	}
 
-	public static void initDriver(String browser) {
+	public static void initDriver() throws Exception {
 		if(Objects.isNull(DriverManager.getDriver())) {
-			if (browser.equalsIgnoreCase("firefox")) {
-				System.setProperty("webdriver.gecko.driver", FrameworkConstants.getChromeDriverPath());
-				DriverManager.setDriver(new FirefoxDriver());
-			}
-			else if (browser.equalsIgnoreCase("chrome")) {
-				System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
-				DriverManager.setDriver(new ChromeDriver());
-			}
-		    else if (browser.equalsIgnoreCase("edge")) {
-			System.setProperty("webdriver.edge.driver", FrameworkConstants.getChromeDriverPath());
-			DriverManager.setDriver(new EdgeDriver());
-		    }
-			DriverManager.getDriver().get(PropertyUtlis.get(ConfigProperties.URL));
+			System.setProperty("webdriver.gecko.driver", FrameworkConstants.getGeckoDriverPath());
+			DriverManager.setDriver(new FirefoxDriver());
 		}
+		DriverManager.getDriver().get(PropertyUtlis.get(ConfigProperties.URL));
 	}
 	
 	public static void quitDriver() {

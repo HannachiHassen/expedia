@@ -22,26 +22,26 @@ public final class ExtentReport {
 	
 	private static ExtentReports extent;
 	
-	public static void initReports() {
+	public static void initReports() throws Exception {
 		if (Objects.isNull(extent)) {
 			extent=new ExtentReports();
 			ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.getExtentReportFilePath());
 			extent.attachReporter(spark);
 			
 			spark.config().setDocumentTitle("Test Results");
-			spark.config().setReportName("ExtentReports - CRMPro Automation");
+			spark.config().setReportName("ExtentReports - Expedia Automation");
 			spark.config().setTheme(Theme.STANDARD);	
 			spark.config().setEncoding("utf-8");
 			spark.config().setProtocol(Protocol.HTTPS);
 			
 			extent.setSystemInfo("Tested By","Hassen Hannachi");	
 			extent.setSystemInfo("GUI Testing", "QA");
-			extent.setSystemInfo("Application","crmpro.com/index.html");
+			extent.setSystemInfo("Application","www.expedia.com");
 		} 
 		
 	}
 	
-	public static void flushReports() {
+	public static void flushReports() throws Exception {
 		if (Objects.nonNull(extent)) {
 			extent.flush();
 		}	

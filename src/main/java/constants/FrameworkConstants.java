@@ -1,11 +1,14 @@
 package constants;
 
+import enums.ConfigProperties;
+import utils.PropertyUtlis;
+
 public final class FrameworkConstants {
-	
-    private FrameworkConstants() {
-		
+
+	private FrameworkConstants() {
+
 	}
-    
+
 	private static final int EXPLICITWAIT = 10;
 
 	private static final String RESOURCESPATH = System.getProperty("user.dir") + "/resources/";
@@ -16,11 +19,26 @@ public final class FrameworkConstants {
 	private static final String CONFIGILEPATH = RESOURCESPATH + "/config/config.properties";
 	private static final String JSONFILEPATH = RESOURCESPATH + "/json/config.json";
 	private static final String JSONUSERFILEPATH = RESOURCESPATH + "/json/users.json";
-	
-	public static String getExtentReportFilePath() {
-		return null;
+
+	private static final String EXTENTREPORTFOLDERPATH = System.getProperty("user.dir") + "/extent-test-output/";
+
+	private static String extentReportFilePath = "";
+
+	public static String getExtentReportFilePath() throws Exception {
+		if (extentReportFilePath.isEmpty()) {
+			return extentReportFilePath = createReportPath();
+		}
+		return extentReportFilePath;
 	}
-	
+
+	private static String createReportPath() throws Exception {
+		if (PropertyUtlis.get(ConfigProperties.OVERRIDEREPORTS).equals("no")) {
+			return EXTENTREPORTFOLDERPATH + System.currentTimeMillis() + "/index.html";
+		} else {
+			return EXTENTREPORTFOLDERPATH + "/index.html";
+		}
+	}
+
 	public static int getExplicitWait() {
 		return EXPLICITWAIT;
 	}
