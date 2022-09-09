@@ -14,6 +14,10 @@ public final class FrameworkConstants {
 	private static final String GECKODRIVERPATH = RESOURCESPATH + "/executables/geckodriver.exe";
 	private static final String EDGEDRIVERPATH = RESOURCESPATH + "/executables/chromedriver.exe";
 
+	public static String getExtentReportFilePath() {
+		return null;
+	}
+	
 	public static int getExplicitwait() {
 		return EXPLICITWAIT;
 	}
@@ -29,5 +33,7 @@ public final class FrameworkConstants {
 	public static String getEdgedriverpath() {
 		return EDGEDRIVERPATH;
 	}
+
+	
 
 }

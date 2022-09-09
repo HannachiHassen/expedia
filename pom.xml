@@ -32,7 +32,7 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.6.1</version>
-			<scope>test</scope>
+			<scope>compiler</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
-			<version>4.0.6</version>
+			<version>5.0.9</version>
 		</dependency>
 	</dependencies>
 
