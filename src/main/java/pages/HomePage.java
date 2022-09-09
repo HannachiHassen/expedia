@@ -21,23 +21,23 @@ public final class HomePage extends BasePage {
 		return getPageTitle();
 	}
 
-	public HomePage getFlight() {
+	public HomePage clickFlight() {
 		click(flight, WaitStrategy.CLICKABLE, "flight");
 		return this;
 	}	
 	
-	public HomePage getRoundtrip() {
+	public HomePage clicktRoundtrip() {
 		click(roundTrip, WaitStrategy.CLICKABLE, "Round Trip");
 		return this;
 	}
 
-	public HomePage enterDeparture(String departureFrom) {
-		sendKeys(textboxDeparture, WaitStrategy.PRESENCE, departureFrom , "Leaving from");
+	public HomePage enterDeparture(String departure) {
+		sendKeys(textboxDeparture, WaitStrategy.PRESENCE, departure , "Leaving from");
 		return this;
 	}
 	
-	public HomePage enterDestination(String goingTo) {
-		sendKeys(textboxDestination, WaitStrategy.PRESENCE, goingTo ,"Going To");
+	public HomePage enterDestination(String destination) {
+		sendKeys(textboxDestination, WaitStrategy.PRESENCE, destination ,"Going To");
 		return this;
 	}
 

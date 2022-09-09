@@ -3,6 +3,8 @@
 <suite name="Expedia Suite" data-provider-thread-count="3">
   <listeners>
  	<listener class-name="listeners.ListenerClass"></listener>
+ 	<listener class-name="listeners.MethodInterceptor"></listener>
+ 	<listener class-name="listeners.AnnotationTransformer"></listener>
   </listeners>
   <test thread-count="5" name="Test" parallel="methods">
     <classes>

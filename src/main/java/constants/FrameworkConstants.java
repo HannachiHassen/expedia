@@ -19,6 +19,11 @@ public final class FrameworkConstants {
 	private static final String CONFIGILEPATH = RESOURCESPATH + "/config/config.properties";
 	private static final String JSONFILEPATH = RESOURCESPATH + "/json/config.json";
 	private static final String JSONUSERFILEPATH = RESOURCESPATH + "/json/users.json";
+	
+	private static final String EXCELFILEPATH= RESOURCESPATH + "/excel/testdata.xlsx";
+	
+	private static final String RUNMANGERSHEET = "RUNMANAGER";
+	private static final String ITERATIONDATASHEET = "DATA";
 
 	private static final String EXTENTREPORTFOLDERPATH = System.getProperty("user.dir") + "/extent-test-output/";
 
@@ -65,6 +70,18 @@ public final class FrameworkConstants {
 
 	public static String getJsonUserFilePat() {
 		return JSONUSERFILEPATH;
+	}
+	
+	public static String getExcelFilePath() {
+		return EXCELFILEPATH;
+	}
+	
+	public static String getRunmangerDatasheet() {
+		return RUNMANGERSHEET;
+	}
+
+	public static String getIterationDatasheet() {
+		return ITERATIONDATASHEET;
 	}
 
 }

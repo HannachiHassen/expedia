@@ -12,6 +12,8 @@ import com.aventstack.extentreports.reporter.configuration.Protocol;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import constants.FrameworkConstants;
+import enums.CategoryType;
+import enums.DeviceType;
 
 
 public final class ExtentReport {
@@ -56,5 +58,23 @@ public final class ExtentReport {
 	public static void createTest(String testcasename) {
 		ExtentTest test =extent.createTest(testcasename);
 		ExtentManager.setExtentTest(test);
+	}
+	
+	public static void addAuthors(String[] authors) {
+		for (String temp:authors) {
+			ExtentManager.getExtentTest().assignAuthor(temp);
+		}		
+	}
+	
+    public static void addCategories(CategoryType[] categories) {
+    	for (CategoryType temp:categories) {
+			ExtentManager.getExtentTest().assignCategory(temp.toString());
+		}
+	}
+    
+    public static void addDevices(DeviceType[] devices) {
+    	for (DeviceType temp:devices) {
+			ExtentManager.getExtentTest().assignDevice(temp.toString());
+		}
 	}
 }

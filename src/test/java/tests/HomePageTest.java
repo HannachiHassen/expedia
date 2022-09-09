@@ -1,34 +1,44 @@
 package tests;
 
+import java.util.Map;
+
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import annotations.FrameworkAnnotation;
+import enums.CategoryType;
+import enums.DeviceType;
 import pages.HomePage;
 
 public final class HomePageTest extends BaseTest{
 
 	private HomePageTest() {}
 	
-	@Test(dataProvider="PickTestDataProvider")	
-    public void reservationFlightTecket(String departureFrom, String goingTo) {    	
+	@FrameworkAnnotation(author = { "Hassen", "Mokran" }, category = { CategoryType.REGRESSION,
+			CategoryType.MINIREGRESSION }, device = { DeviceType.FIREFOX, DeviceType.CHROME })
+	@Test
+    public void flightTicketTest(Map<String, String> data) {   	
     	
     	String title= new HomePage()
-    			.enterDeparture(departureFrom)
-    			.enterDestination(goingTo)
+    			.clickFlight()
+    			.clicktRoundtrip()
+    			.enterDeparture(data.get("departure")).enterDestination(data.get("destination"))
     			.getTitle();
  
     	Assert.assertEquals(title,"Expedia Travel: Vacation Homes, Hotels, Car Rentals, Flights & More");
 	}
 	
-	@DataProvider(name="PickTestDataProvider", parallel = true)
-    public Object[][] getData() {
-    	return new Object[][] {
-			{"Philadelphia","Madrid"}
-			/*{"Admin","admin1234"}
-			{"Admin","admin123"},
-			{"Admin123","admin1234"}*/
-		};    	
-    }
+	@FrameworkAnnotation(author = { "Hassen" }, category = { CategoryType.REGRESSION,
+			CategoryType.SANITY}, device = { DeviceType.FIREFOX })
+	@Test
+	public void newTest(Map<String, String> data) {
 
+		String title= new HomePage()
+    			.clickFlight()
+    			.clicktRoundtrip()
+    			.enterDeparture(data.get("departure")).enterDestination(data.get("destination"))
+    			.getTitle();
+
+		Assert.assertEquals(title,"Expedia Travel: Vacation Homes, Hotels, Car Rentals, Flights & More");
+	}
 }
